@@ -1,0 +1,18 @@
+.a{
+    position:absolute;
+    left:50%;
+    top:25%;
+
+}
+
+.lightButton{
+    position:relative;
+    margin:15px;
+    padding:15px 15px;
+    transition:1s;
+   
+}
+.lightButton:hover{
+    cursor:pointer;
+  background-color:#f4221f;
+}
