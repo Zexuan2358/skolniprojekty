@@ -135,7 +135,7 @@ for($x=1;$x<=$sloupec;$x++){
    
         
         
-        $rodneCislo="030101/1111";
+        $rodneCislo="950101/1111";
         echo "rodne cislo: ".$rodneCislo;
         var_dump(vek($rodneCislo));
         /**
@@ -146,14 +146,14 @@ for($x=1;$x<=$sloupec;$x++){
         function vek (string $rodneCislo){
             $narozeni=substr($rodneCislo,0,2);
             $stoleti= substr(date("Y"),2,2);
-            if($narozeni <=$stoleti){
+            if($narozeni <=$stoleti){ //pokud jsou první 2 čísla rodného čísla větší než poslední dvě čísla aktuálního století, tak osoba patří do roku 2000-Současný rok
                 $narozeni= "20".$narozeni;
             }
             else{
                 $narozeni= "19".$narozeni;
             }
             $vek=date("Y")-$narozeni;
-            return $vek;
+            return $narozeni;
         }
         
         die;
