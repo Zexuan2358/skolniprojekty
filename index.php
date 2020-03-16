@@ -137,13 +137,14 @@ for($x=1;$x<=$sloupec;$x++){
         
         $rodneCislo="030101/1111";
         echo "rodne cislo: ".$rodneCislo;
-        var_dump(vek($rodneCislo,0)); //pokud je zadán druhý parametr jako 1 vypíše se rok narození
+        var_dump(vek($rodneCislo)); //pokud je zadán druhý parametr jako 1 vypíše se rok narození
         /**
          * 
          * @param string $rodneCislo
+         * @param bool $volba
          * @return int
          */
-        function vek (string $rodneCislo, bool $volba){
+        function vek (string $rodneCislo, bool $volba = false){
             $narozeni=substr($rodneCislo,0,2);
             $stoleti= substr(date("Y"),2,2);
             if($narozeni <=$stoleti){ //pokud jsou první 2 čísla rodného čísla větší než poslední dvě čísla aktuálního století, tak osoba patří do roku 2000-Současný rok
@@ -159,7 +160,7 @@ for($x=1;$x<=$sloupec;$x++){
             return $vek;
         }
         
-        die;
+  
             /**
          * vytvoř vlastní funkci, která provede výpočet a formátování ceny. použijte funkce např: number_format a round. Funkce bude např z čísla(int) 145.25452 dělat cenový (string) 145.25CZK
         *Funkce bude mít následující parametry a některé nebude nutné zadávat jako např. měnu nebo počet míst v zaokrouhlování
@@ -169,8 +170,8 @@ for($x=1;$x<=$sloupec;$x++){
          * @param int $precision
          * @return float
          */
-        var_dump (currency(145.25452));
-        function  currency($price, $currency="CZK", $precision=2){
+        var_dump (currency(145.25452, "eur"));
+        function  currency(float $price, string $currency="CZK", int $precision=2){
             $price = round($price, $precision);
             $price = number_format($price, $precision).",-".$currency;
           return $price;  
